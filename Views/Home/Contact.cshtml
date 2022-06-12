@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Контакты";
+}
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+<h2>@ViewBag.Title</h2>
+
+<address>
+    Пермь, Национальный исследовательский университет Высшая школа Экономики<br />
+    Бульвар Гагарина 37<br />
+    <abbr title="Телефон">Телефон: </abbr>
+    89194490499
+</address>
+
+<address>
+    <strong>Техническая поддержка:</strong>   <a href="mailto:oakrokhina@edu.hse.ru">oakrokhina@edu.hse.ru</a><br />
+</address>
+
+<p>
+    @Html.ActionLink("Вернуться в главное меню", "Index", "Home")
+</p>

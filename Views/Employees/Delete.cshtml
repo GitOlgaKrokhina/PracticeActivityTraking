@@ -1,0 +1,92 @@
+﻿@model PracticeActivityTraking.Employee
+
+@{
+    ViewBag.Title = "Удаление учетной записи";
+}
+
+<h2>Удаление учетной записи</h2>
+
+<h3>Вы уверены, что хотите удалить запись?</h3>
+<h2>Внимание!</h2>
+<h3>При наличии данных, связанных с этой записью в других табоицах базы данных, они будут удалены каскадно. Убедитесь, что удаляемые данные ошибочны и не подлежат исправлению!</h3>
+<div>
+    <h4>Сотрудник</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patronymic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patronymic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Birthdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birthdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodifierGender.GenderName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodifierGender.GenderName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Вернуться к списку учетных записей", "Index")
+        </div>
+    }
+</div>

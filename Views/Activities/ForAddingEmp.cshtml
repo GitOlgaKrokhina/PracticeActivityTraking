@@ -1,0 +1,14 @@
+﻿@model PracticeActivityTraking.Activity
+@{
+    ViewBag.Title = "Добавление участников активности";
+}
+
+<h2>Добавление участников активности</h2>
+<h4>Добавьте участников, совершивших активность</h4>
+<p>
+    @Html.ActionLink("Добавить участника активности", "Create", "EmployeeToActivities")
+</p>
+<p>
+    @Html.ActionLink("Вернуться к списку активностей", "Index", "Activities")
+</p>
+

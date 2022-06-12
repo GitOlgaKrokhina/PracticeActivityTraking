@@ -1,0 +1,41 @@
+﻿@model PracticeActivityTraking.CodifierActivity
+
+@{
+    ViewBag.Title = "Информация о типе активности";
+}
+
+<h2>Информация о типе активности</h2>
+
+<div>
+    <h4>Активность</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivityTypeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivityTypeID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivityName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Score)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Изменить", "Edit", new { id = Model.ActivityTypeID }) |
+    @Html.ActionLink("Вернуться к кодификатору активностей", "Index")
+</p>

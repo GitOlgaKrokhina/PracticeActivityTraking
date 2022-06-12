@@ -1,0 +1,1062 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ActivityTrackingModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="ActivityID" />
+          </Key>
+          <Property Name="ActivityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ActivityTypeID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="ActivityStatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodifierActivity">
+          <Key>
+            <PropertyRef Name="ActivityTypeID" />
+          </Key>
+          <Property Name="ActivityTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActivityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Score" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodifierDepartment">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodifierFormatEvent">
+          <Key>
+            <PropertyRef Name="FormatID" />
+          </Key>
+          <Property Name="FormatID" Type="int" Nullable="false" />
+          <Property Name="FormatName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodifierGender">
+          <Key>
+            <PropertyRef Name="GenderID" />
+          </Key>
+          <Property Name="GenderID" Type="int" Nullable="false" />
+          <Property Name="GenderName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodifierPost">
+          <Key>
+            <PropertyRef Name="PostID" />
+          </Key>
+          <Property Name="PostID" Type="int" Nullable="false" />
+          <Property Name="PostName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodifierRequestHelp">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodifierStatusActivity">
+          <Key>
+            <PropertyRef Name="ActivityStatusID" />
+          </Key>
+          <Property Name="ActivityStatusID" Type="int" Nullable="false" />
+          <Property Name="ActivityStatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodifierStatusEvent">
+          <Key>
+            <PropertyRef Name="EventStatusID" />
+          </Key>
+          <Property Name="EventStatusID" Type="int" Nullable="false" />
+          <Property Name="EventStatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodifierSubtypeEvent">
+          <Key>
+            <PropertyRef Name="SubtypeID" />
+          </Key>
+          <Property Name="SubtypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+          <Property Name="SubtypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodifierTypeEvent">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="int" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="PassportID" />
+          </Key>
+          <Property Name="PassportID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+          <Property Name="GenderID" Type="int" Nullable="false" />
+          <Property Name="Birthdate" Type="date" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeToActivity">
+          <Key>
+            <PropertyRef Name="ConnectID" />
+          </Key>
+          <Property Name="ConnectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PassportID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ActivityID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EventName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FormatID" Type="int" Nullable="false" />
+          <Property Name="SubtypeEventID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="EventStatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="EmployeeNumberID" />
+          </Key>
+          <Property Name="EmployeeNumberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PassportID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostID" Type="int" Nullable="false" />
+          <Property Name="DepartmentID" Type="int" Nullable="false" />
+          <Property Name="DateEmployment" Type="date" Nullable="false" />
+          <Property Name="DateDismissal" Type="date" />
+        </EntityType>
+        <EntityType Name="RequestHelp">
+          <Key>
+            <PropertyRef Name="RequestID" />
+          </Key>
+          <Property Name="RequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PassportID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Activity_CodifierActivity">
+          <End Role="CodifierActivity" Type="Self.CodifierActivity" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierActivity">
+              <PropertyRef Name="ActivityTypeID" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="ActivityTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activity_CodifierStatusActivity">
+          <End Role="CodifierStatusActivity" Type="Self.CodifierStatusActivity" Multiplicity="1" />
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierStatusActivity">
+              <PropertyRef Name="ActivityStatusID" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="ActivityStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activity_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CodifierSubtypeEvent_CodifierTypeEvent">
+          <End Role="CodifierTypeEvent" Type="Self.CodifierTypeEvent" Multiplicity="1" />
+          <End Role="CodifierSubtypeEvent" Type="Self.CodifierSubtypeEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierTypeEvent">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="CodifierSubtypeEvent">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_CodifierGender">
+          <End Role="CodifierGender" Type="Self.CodifierGender" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierGender">
+              <PropertyRef Name="GenderID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeToActivity_Activity">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmployeeToActivity" Type="Self.EmployeeToActivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="ActivityID" />
+            </Principal>
+            <Dependent Role="EmployeeToActivity">
+              <PropertyRef Name="ActivityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeToActivity_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmployeeToActivity" Type="Self.EmployeeToActivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="PassportID" />
+            </Principal>
+            <Dependent Role="EmployeeToActivity">
+              <PropertyRef Name="PassportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_CodifierFormatEvent">
+          <End Role="CodifierFormatEvent" Type="Self.CodifierFormatEvent" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierFormatEvent">
+              <PropertyRef Name="FormatID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="FormatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_CodifierStatusEvent">
+          <End Role="CodifierStatusEvent" Type="Self.CodifierStatusEvent" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierStatusEvent">
+              <PropertyRef Name="EventStatusID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="EventStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_CodifierSubtypeEvent">
+          <End Role="CodifierSubtypeEvent" Type="Self.CodifierSubtypeEvent" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierSubtypeEvent">
+              <PropertyRef Name="SubtypeID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="SubtypeEventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Post_CodifierDepartment">
+          <End Role="CodifierDepartment" Type="Self.CodifierDepartment" Multiplicity="1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierDepartment">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Post_CodifierPost">
+          <End Role="CodifierPost" Type="Self.CodifierPost" Multiplicity="1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierPost">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="PostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Post_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="PassportID" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="PassportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestHelp_CodifierRequestHelp">
+          <End Role="CodifierRequestHelp" Type="Self.CodifierRequestHelp" Multiplicity="1" />
+          <End Role="RequestHelp" Type="Self.RequestHelp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierRequestHelp">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="RequestHelp">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestHelp_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="RequestHelp" Type="Self.RequestHelp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="PassportID" />
+            </Principal>
+            <Dependent Role="RequestHelp">
+              <PropertyRef Name="PassportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ActivityTrackingModelContainer">
+          <EntitySet Name="Activity" EntityType="Self.Activity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CodifierActivity" EntityType="Self.CodifierActivity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CodifierDepartment" EntityType="Self.CodifierDepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CodifierFormatEvent" EntityType="Self.CodifierFormatEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CodifierGender" EntityType="Self.CodifierGender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CodifierPost" EntityType="Self.CodifierPost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CodifierRequestHelp" EntityType="Self.CodifierRequestHelp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CodifierStatusActivity" EntityType="Self.CodifierStatusActivity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CodifierStatusEvent" EntityType="Self.CodifierStatusEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CodifierSubtypeEvent" EntityType="Self.CodifierSubtypeEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CodifierTypeEvent" EntityType="Self.CodifierTypeEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeToActivity" EntityType="Self.EmployeeToActivity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestHelp" EntityType="Self.RequestHelp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Activity_CodifierActivity" Association="Self.FK_Activity_CodifierActivity">
+            <End Role="CodifierActivity" EntitySet="CodifierActivity" />
+            <End Role="Activity" EntitySet="Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activity_CodifierStatusActivity" Association="Self.FK_Activity_CodifierStatusActivity">
+            <End Role="CodifierStatusActivity" EntitySet="CodifierStatusActivity" />
+            <End Role="Activity" EntitySet="Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activity_Event" Association="Self.FK_Activity_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Activity" EntitySet="Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CodifierSubtypeEvent_CodifierTypeEvent" Association="Self.FK_CodifierSubtypeEvent_CodifierTypeEvent">
+            <End Role="CodifierTypeEvent" EntitySet="CodifierTypeEvent" />
+            <End Role="CodifierSubtypeEvent" EntitySet="CodifierSubtypeEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_CodifierGender" Association="Self.FK_Employee_CodifierGender">
+            <End Role="CodifierGender" EntitySet="CodifierGender" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeToActivity_Activity" Association="Self.FK_EmployeeToActivity_Activity">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="EmployeeToActivity" EntitySet="EmployeeToActivity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeToActivity_Employee" Association="Self.FK_EmployeeToActivity_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeToActivity" EntitySet="EmployeeToActivity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_CodifierFormatEvent" Association="Self.FK_Event_CodifierFormatEvent">
+            <End Role="CodifierFormatEvent" EntitySet="CodifierFormatEvent" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_CodifierStatusEvent" Association="Self.FK_Event_CodifierStatusEvent">
+            <End Role="CodifierStatusEvent" EntitySet="CodifierStatusEvent" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_CodifierSubtypeEvent" Association="Self.FK_Event_CodifierSubtypeEvent">
+            <End Role="CodifierSubtypeEvent" EntitySet="CodifierSubtypeEvent" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Post_CodifierDepartment" Association="Self.FK_Post_CodifierDepartment">
+            <End Role="CodifierDepartment" EntitySet="CodifierDepartment" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Post_CodifierPost" Association="Self.FK_Post_CodifierPost">
+            <End Role="CodifierPost" EntitySet="CodifierPost" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Post_Employee" Association="Self.FK_Post_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestHelp_CodifierRequestHelp" Association="Self.FK_RequestHelp_CodifierRequestHelp">
+            <End Role="CodifierRequestHelp" EntitySet="CodifierRequestHelp" />
+            <End Role="RequestHelp" EntitySet="RequestHelp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestHelp_Employee" Association="Self.FK_RequestHelp_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="RequestHelp" EntitySet="RequestHelp" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ActivityTrackingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="ActivityID" />
+          </Key>
+          <Property Name="ActivityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActivityTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ActivityStatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CodifierActivity" Relationship="Self.FK_Activity_CodifierActivity" FromRole="Activity" ToRole="CodifierActivity" />
+          <NavigationProperty Name="CodifierStatusActivity" Relationship="Self.FK_Activity_CodifierStatusActivity" FromRole="Activity" ToRole="CodifierStatusActivity" />
+          <NavigationProperty Name="Event" Relationship="Self.FK_Activity_Event" FromRole="Activity" ToRole="Event" />
+          <NavigationProperty Name="EmployeeToActivities" Relationship="Self.FK_EmployeeToActivity_Activity" FromRole="Activity" ToRole="EmployeeToActivity" />
+        </EntityType>
+        <EntityType Name="CodifierActivity">
+          <Key>
+            <PropertyRef Name="ActivityTypeID" />
+          </Key>
+          <Property Name="ActivityTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActivityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Activities" Relationship="Self.FK_Activity_CodifierActivity" FromRole="CodifierActivity" ToRole="Activity" />
+        </EntityType>
+        <EntityType Name="CodifierDepartment">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Posts" Relationship="Self.FK_Post_CodifierDepartment" FromRole="CodifierDepartment" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="CodifierFormatEvent">
+          <Key>
+            <PropertyRef Name="FormatID" />
+          </Key>
+          <Property Name="FormatID" Type="Int32" Nullable="false" />
+          <Property Name="FormatName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Events" Relationship="Self.FK_Event_CodifierFormatEvent" FromRole="CodifierFormatEvent" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="CodifierGender">
+          <Key>
+            <PropertyRef Name="GenderID" />
+          </Key>
+          <Property Name="GenderID" Type="Int32" Nullable="false" />
+          <Property Name="GenderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_CodifierGender" FromRole="CodifierGender" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="CodifierPost">
+          <Key>
+            <PropertyRef Name="PostID" />
+          </Key>
+          <Property Name="PostID" Type="Int32" Nullable="false" />
+          <Property Name="PostName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Posts" Relationship="Self.FK_Post_CodifierPost" FromRole="CodifierPost" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="CodifierRequestHelp">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RequestHelps" Relationship="Self.FK_RequestHelp_CodifierRequestHelp" FromRole="CodifierRequestHelp" ToRole="RequestHelp" />
+        </EntityType>
+        <EntityType Name="CodifierStatusActivity">
+          <Key>
+            <PropertyRef Name="ActivityStatusID" />
+          </Key>
+          <Property Name="ActivityStatusID" Type="Int32" Nullable="false" />
+          <Property Name="ActivityStatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Activities" Relationship="Self.FK_Activity_CodifierStatusActivity" FromRole="CodifierStatusActivity" ToRole="Activity" />
+        </EntityType>
+        <EntityType Name="CodifierStatusEvent">
+          <Key>
+            <PropertyRef Name="EventStatusID" />
+          </Key>
+          <Property Name="EventStatusID" Type="Int32" Nullable="false" />
+          <Property Name="EventStatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Events" Relationship="Self.FK_Event_CodifierStatusEvent" FromRole="CodifierStatusEvent" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="CodifierSubtypeEvent">
+          <Key>
+            <PropertyRef Name="SubtypeID" />
+          </Key>
+          <Property Name="SubtypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <Property Name="SubtypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CodifierTypeEvent" Relationship="Self.FK_CodifierSubtypeEvent_CodifierTypeEvent" FromRole="CodifierSubtypeEvent" ToRole="CodifierTypeEvent" />
+          <NavigationProperty Name="Events" Relationship="Self.FK_Event_CodifierSubtypeEvent" FromRole="CodifierSubtypeEvent" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="CodifierTypeEvent">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CodifierSubtypeEvents" Relationship="Self.FK_CodifierSubtypeEvent_CodifierTypeEvent" FromRole="CodifierTypeEvent" ToRole="CodifierSubtypeEvent" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="PassportID" />
+          </Key>
+          <Property Name="PassportID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GenderID" Type="Int32" Nullable="false" />
+          <Property Name="Birthdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CodifierGender" Relationship="Self.FK_Employee_CodifierGender" FromRole="Employee" ToRole="CodifierGender" />
+          <NavigationProperty Name="EmployeeToActivities" Relationship="Self.FK_EmployeeToActivity_Employee" FromRole="Employee" ToRole="EmployeeToActivity" />
+          <NavigationProperty Name="Posts" Relationship="Self.FK_Post_Employee" FromRole="Employee" ToRole="Post" />
+          <NavigationProperty Name="RequestHelps" Relationship="Self.FK_RequestHelp_Employee" FromRole="Employee" ToRole="RequestHelp" />
+        </EntityType>
+        <EntityType Name="EmployeeToActivity">
+          <Key>
+            <PropertyRef Name="ConnectID" />
+          </Key>
+          <Property Name="ConnectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PassportID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActivityID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK_EmployeeToActivity_Activity" FromRole="EmployeeToActivity" ToRole="Activity" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_EmployeeToActivity_Employee" FromRole="EmployeeToActivity" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EventName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FormatID" Type="Int32" Nullable="false" />
+          <Property Name="SubtypeEventID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EventStatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Activities" Relationship="Self.FK_Activity_Event" FromRole="Event" ToRole="Activity" />
+          <NavigationProperty Name="CodifierFormatEvent" Relationship="Self.FK_Event_CodifierFormatEvent" FromRole="Event" ToRole="CodifierFormatEvent" />
+          <NavigationProperty Name="CodifierStatusEvent" Relationship="Self.FK_Event_CodifierStatusEvent" FromRole="Event" ToRole="CodifierStatusEvent" />
+          <NavigationProperty Name="CodifierSubtypeEvent" Relationship="Self.FK_Event_CodifierSubtypeEvent" FromRole="Event" ToRole="CodifierSubtypeEvent" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="EmployeeNumberID" />
+          </Key>
+          <Property Name="EmployeeNumberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PassportID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostID" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+          <Property Name="DateEmployment" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateDismissal" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CodifierDepartment" Relationship="Self.FK_Post_CodifierDepartment" FromRole="Post" ToRole="CodifierDepartment" />
+          <NavigationProperty Name="CodifierPost" Relationship="Self.FK_Post_CodifierPost" FromRole="Post" ToRole="CodifierPost" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Post_Employee" FromRole="Post" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="RequestHelp">
+          <Key>
+            <PropertyRef Name="RequestID" />
+          </Key>
+          <Property Name="RequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PassportID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CodifierRequestHelp" Relationship="Self.FK_RequestHelp_CodifierRequestHelp" FromRole="RequestHelp" ToRole="CodifierRequestHelp" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_RequestHelp_Employee" FromRole="RequestHelp" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Activity_CodifierActivity">
+          <End Role="CodifierActivity" Type="Self.CodifierActivity" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierActivity">
+              <PropertyRef Name="ActivityTypeID" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="ActivityTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activity_CodifierStatusActivity">
+          <End Role="CodifierStatusActivity" Type="Self.CodifierStatusActivity" Multiplicity="1" />
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierStatusActivity">
+              <PropertyRef Name="ActivityStatusID" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="ActivityStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activity_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeToActivity_Activity">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmployeeToActivity" Type="Self.EmployeeToActivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="ActivityID" />
+            </Principal>
+            <Dependent Role="EmployeeToActivity">
+              <PropertyRef Name="ActivityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Post_CodifierDepartment">
+          <End Role="CodifierDepartment" Type="Self.CodifierDepartment" Multiplicity="1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierDepartment">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_CodifierFormatEvent">
+          <End Role="CodifierFormatEvent" Type="Self.CodifierFormatEvent" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierFormatEvent">
+              <PropertyRef Name="FormatID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="FormatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_CodifierGender">
+          <End Role="CodifierGender" Type="Self.CodifierGender" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierGender">
+              <PropertyRef Name="GenderID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Post_CodifierPost">
+          <End Role="CodifierPost" Type="Self.CodifierPost" Multiplicity="1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierPost">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="PostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestHelp_CodifierRequestHelp">
+          <End Role="CodifierRequestHelp" Type="Self.CodifierRequestHelp" Multiplicity="1" />
+          <End Role="RequestHelp" Type="Self.RequestHelp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierRequestHelp">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="RequestHelp">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_CodifierStatusEvent">
+          <End Role="CodifierStatusEvent" Type="Self.CodifierStatusEvent" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierStatusEvent">
+              <PropertyRef Name="EventStatusID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="EventStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CodifierSubtypeEvent_CodifierTypeEvent">
+          <End Role="CodifierTypeEvent" Type="Self.CodifierTypeEvent" Multiplicity="1" />
+          <End Role="CodifierSubtypeEvent" Type="Self.CodifierSubtypeEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierTypeEvent">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="CodifierSubtypeEvent">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_CodifierSubtypeEvent">
+          <End Role="CodifierSubtypeEvent" Type="Self.CodifierSubtypeEvent" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodifierSubtypeEvent">
+              <PropertyRef Name="SubtypeID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="SubtypeEventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeToActivity_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmployeeToActivity" Type="Self.EmployeeToActivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="PassportID" />
+            </Principal>
+            <Dependent Role="EmployeeToActivity">
+              <PropertyRef Name="PassportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Post_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="PassportID" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="PassportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestHelp_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="RequestHelp" Type="Self.RequestHelp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="PassportID" />
+            </Principal>
+            <Dependent Role="RequestHelp">
+              <PropertyRef Name="PassportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ActivityTrackingEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Activities" EntityType="Self.Activity" />
+          <EntitySet Name="CodifierActivities" EntityType="Self.CodifierActivity" />
+          <EntitySet Name="CodifierDepartments" EntityType="Self.CodifierDepartment" />
+          <EntitySet Name="CodifierFormatEvents" EntityType="Self.CodifierFormatEvent" />
+          <EntitySet Name="CodifierGenders" EntityType="Self.CodifierGender" />
+          <EntitySet Name="CodifierPosts" EntityType="Self.CodifierPost" />
+          <EntitySet Name="CodifierRequestHelps" EntityType="Self.CodifierRequestHelp" />
+          <EntitySet Name="CodifierStatusActivities" EntityType="Self.CodifierStatusActivity" />
+          <EntitySet Name="CodifierStatusEvents" EntityType="Self.CodifierStatusEvent" />
+          <EntitySet Name="CodifierSubtypeEvents" EntityType="Self.CodifierSubtypeEvent" />
+          <EntitySet Name="CodifierTypeEvents" EntityType="Self.CodifierTypeEvent" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="EmployeeToActivities" EntityType="Self.EmployeeToActivity" />
+          <EntitySet Name="Events" EntityType="Self.Event" />
+          <EntitySet Name="Posts" EntityType="Self.Post" />
+          <EntitySet Name="RequestHelps" EntityType="Self.RequestHelp" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_Activity_CodifierActivity" Association="Self.FK_Activity_CodifierActivity">
+            <End Role="CodifierActivity" EntitySet="CodifierActivities" />
+            <End Role="Activity" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activity_CodifierStatusActivity" Association="Self.FK_Activity_CodifierStatusActivity">
+            <End Role="CodifierStatusActivity" EntitySet="CodifierStatusActivities" />
+            <End Role="Activity" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activity_Event" Association="Self.FK_Activity_Event">
+            <End Role="Event" EntitySet="Events" />
+            <End Role="Activity" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeToActivity_Activity" Association="Self.FK_EmployeeToActivity_Activity">
+            <End Role="Activity" EntitySet="Activities" />
+            <End Role="EmployeeToActivity" EntitySet="EmployeeToActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Post_CodifierDepartment" Association="Self.FK_Post_CodifierDepartment">
+            <End Role="CodifierDepartment" EntitySet="CodifierDepartments" />
+            <End Role="Post" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_CodifierFormatEvent" Association="Self.FK_Event_CodifierFormatEvent">
+            <End Role="CodifierFormatEvent" EntitySet="CodifierFormatEvents" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_CodifierGender" Association="Self.FK_Employee_CodifierGender">
+            <End Role="CodifierGender" EntitySet="CodifierGenders" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Post_CodifierPost" Association="Self.FK_Post_CodifierPost">
+            <End Role="CodifierPost" EntitySet="CodifierPosts" />
+            <End Role="Post" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestHelp_CodifierRequestHelp" Association="Self.FK_RequestHelp_CodifierRequestHelp">
+            <End Role="CodifierRequestHelp" EntitySet="CodifierRequestHelps" />
+            <End Role="RequestHelp" EntitySet="RequestHelps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_CodifierStatusEvent" Association="Self.FK_Event_CodifierStatusEvent">
+            <End Role="CodifierStatusEvent" EntitySet="CodifierStatusEvents" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CodifierSubtypeEvent_CodifierTypeEvent" Association="Self.FK_CodifierSubtypeEvent_CodifierTypeEvent">
+            <End Role="CodifierTypeEvent" EntitySet="CodifierTypeEvents" />
+            <End Role="CodifierSubtypeEvent" EntitySet="CodifierSubtypeEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_CodifierSubtypeEvent" Association="Self.FK_Event_CodifierSubtypeEvent">
+            <End Role="CodifierSubtypeEvent" EntitySet="CodifierSubtypeEvents" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeToActivity_Employee" Association="Self.FK_EmployeeToActivity_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="EmployeeToActivity" EntitySet="EmployeeToActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Post_Employee" Association="Self.FK_Post_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Post" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestHelp_Employee" Association="Self.FK_RequestHelp_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="RequestHelp" EntitySet="RequestHelps" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ActivityTrackingModelContainer" CdmEntityContainer="ActivityTrackingEntities1">
+          <EntitySetMapping Name="Activities">
+            <EntityTypeMapping TypeName="ActivityTrackingModel.Activity">
+              <MappingFragment StoreEntitySet="Activity">
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="ActivityTypeID" ColumnName="ActivityTypeID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ActivityStatusID" ColumnName="ActivityStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodifierActivities">
+            <EntityTypeMapping TypeName="ActivityTrackingModel.CodifierActivity">
+              <MappingFragment StoreEntitySet="CodifierActivity">
+                <ScalarProperty Name="ActivityTypeID" ColumnName="ActivityTypeID" />
+                <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodifierDepartments">
+            <EntityTypeMapping TypeName="ActivityTrackingModel.CodifierDepartment">
+              <MappingFragment StoreEntitySet="CodifierDepartment">
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodifierFormatEvents">
+            <EntityTypeMapping TypeName="ActivityTrackingModel.CodifierFormatEvent">
+              <MappingFragment StoreEntitySet="CodifierFormatEvent">
+                <ScalarProperty Name="FormatID" ColumnName="FormatID" />
+                <ScalarProperty Name="FormatName" ColumnName="FormatName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodifierGenders">
+            <EntityTypeMapping TypeName="ActivityTrackingModel.CodifierGender">
+              <MappingFragment StoreEntitySet="CodifierGender">
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+                <ScalarProperty Name="GenderName" ColumnName="GenderName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodifierPosts">
+            <EntityTypeMapping TypeName="ActivityTrackingModel.CodifierPost">
+              <MappingFragment StoreEntitySet="CodifierPost">
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="PostName" ColumnName="PostName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodifierRequestHelps">
+            <EntityTypeMapping TypeName="ActivityTrackingModel.CodifierRequestHelp">
+              <MappingFragment StoreEntitySet="CodifierRequestHelp">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodifierStatusActivities">
+            <EntityTypeMapping TypeName="ActivityTrackingModel.CodifierStatusActivity">
+              <MappingFragment StoreEntitySet="CodifierStatusActivity">
+                <ScalarProperty Name="ActivityStatusID" ColumnName="ActivityStatusID" />
+                <ScalarProperty Name="ActivityStatusName" ColumnName="ActivityStatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodifierStatusEvents">
+            <EntityTypeMapping TypeName="ActivityTrackingModel.CodifierStatusEvent">
+              <MappingFragment StoreEntitySet="CodifierStatusEvent">
+                <ScalarProperty Name="EventStatusID" ColumnName="EventStatusID" />
+                <ScalarProperty Name="EventStatusName" ColumnName="EventStatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodifierSubtypeEvents">
+            <EntityTypeMapping TypeName="ActivityTrackingModel.CodifierSubtypeEvent">
+              <MappingFragment StoreEntitySet="CodifierSubtypeEvent">
+                <ScalarProperty Name="SubtypeID" ColumnName="SubtypeID" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="SubtypeName" ColumnName="SubtypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodifierTypeEvents">
+            <EntityTypeMapping TypeName="ActivityTrackingModel.CodifierTypeEvent">
+              <MappingFragment StoreEntitySet="CodifierTypeEvent">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="ActivityTrackingModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+                <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeToActivities">
+            <EntityTypeMapping TypeName="ActivityTrackingModel.EmployeeToActivity">
+              <MappingFragment StoreEntitySet="EmployeeToActivity">
+                <ScalarProperty Name="ConnectID" ColumnName="ConnectID" />
+                <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="ActivityTrackingModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
+                <ScalarProperty Name="FormatID" ColumnName="FormatID" />
+                <ScalarProperty Name="SubtypeEventID" ColumnName="SubtypeEventID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="EventStatusID" ColumnName="EventStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="ActivityTrackingModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="EmployeeNumberID" ColumnName="EmployeeNumberID" />
+                <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="DateEmployment" ColumnName="DateEmployment" />
+                <ScalarProperty Name="DateDismissal" ColumnName="DateDismissal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestHelps">
+            <EntityTypeMapping TypeName="ActivityTrackingModel.RequestHelp">
+              <MappingFragment StoreEntitySet="RequestHelp">
+                <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+                <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ActivityTrackingModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

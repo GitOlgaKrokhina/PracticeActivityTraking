@@ -1,0 +1,65 @@
+﻿@model IEnumerable<PracticeActivityTraking.Post>
+
+@{
+    ViewBag.Title = "Должности сотрудников предприятия";
+}
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+<h2>Должности сотрудников предприятия</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.Patronymic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodifierDepartment.DepartmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodifierPost.PostName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateEmployment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateDismissal)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Patronymic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodifierDepartment.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodifierPost.PostName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateEmployment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateDismissal)
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Вернуться в главное меню", "Index", "Home")
+</p>

@@ -1,0 +1,39 @@
+﻿@model PracticeActivityTraking.CodifierSubtypeEvent
+@{
+    ViewBag.Title = "Информация о подтипе мероприятия";
+}
+
+<h2>Информация о подтипе мероприятия</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SubtypeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubtypeID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SubtypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubtypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodifierTypeEvent.TypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodifierTypeEvent.TypeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Изменить", "Edit", new { id = Model.SubtypeID }) |
+    @Html.ActionLink("Вернуться к кодификатору подтипов мероприятий", "Index")
+</p>

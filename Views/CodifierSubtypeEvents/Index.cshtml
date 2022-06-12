@@ -1,0 +1,43 @@
+﻿@model IEnumerable<PracticeActivityTraking.CodifierSubtypeEvent>
+
+@{
+    ViewBag.Title = "Кодификатор подтипов мероприятий";
+}
+
+<h2>Кодификатор подтипов мероприятий</h2>
+
+<p>
+    @Html.ActionLink("Добавить новый подтип мероприятия", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SubtypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodifierTypeEvent.TypeName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubtypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodifierTypeEvent.TypeName)
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id = item.SubtypeID }) |
+                @Html.ActionLink("Подробнее", "Details", new { id = item.SubtypeID }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.SubtypeID })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Вернуться в панель HR-сотрудника", "Index", "HR")
+</p>

@@ -1,0 +1,41 @@
+﻿@model PracticeActivityTraking.EmployeeToActivity
+
+@{
+    ViewBag.Title = "Удаление участника активности";
+}
+
+<h2>Удаление участника активности</h2>
+
+<h3>Вы уверены, что хотите удалить участника активности?</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Activity.EventID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activity.EventID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Вернуться к списку участников активности", "Index")
+        </div>
+    }
+</div>

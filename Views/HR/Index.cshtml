@@ -1,0 +1,78 @@
+﻿@model PracticeActivityTraking.Employee
+@{ ViewData["Title"] = "Панель HR-сотрудника"; }
+@{
+    Layout = "~/Views/Shared/_LayoutHR.cshtml";
+}
+
+<h1>Панель HR-сотрудника</h1>
+
+<div>
+    <h3>
+        @Html.ActionLink("Сотрудники предприятия", "Index", "Employees")
+    </h3>
+    <h5>
+        Управляйте учетными записями сотрудников. Добавляйте, просматривайте, редактируйте и отслеживайте их уровень активности.
+    </h5>
+    <h3>
+        @Html.ActionLink("Должности сотрудников", "Index", "Posts")
+    </h3>
+    <h5>
+        Управляйте должностями сотрудников. Добавляйте новую информацию о вступлении сотрудника на должность или об увольнении с нее.
+    </h5>
+    <h3>
+        @Html.ActionLink("Мероприятия", "Index", "Events")
+    </h3>
+    <h5>
+        Управляйте мероприятиями на предприятии. Добавляйте информацию о предстоящих или прошедших мероприятиях и управляйте ими.
+    </h5>
+    <h3>
+        @Html.ActionLink("Активности сотрудников", "Index", "Activities")
+    </h3>
+    <h5>
+        Управляйте активностями сотрудников. Добавляйте новые активности сотрудникам и подтверждайте заявки пользователей на добавлении активностей.
+    </h5>
+    <h3>
+        @Html.ActionLink("Заявки на исправление данных", "Index", "RequestHelps")
+    </h3>
+    <h5>
+        Заявки на исправление ошибочных данных от сотрудников предприятия.
+    </h5>
+</div>
+
+<h2>Создание отчетов</h2>
+
+<div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            @Html.ActionLink("Рейтинг сотрудников в Excel", "RangEmployeeExcel", "HR")
+            <h5>
+                Отчет с рейтингом всех сотрудников по суммарному количеству баллов за активности.
+            </h5>
+        </li>
+        <li class="list-group-item">
+            @Html.ActionLink("Сотрудники и их активность в Excel", "EmployeeAndActivityExcel", "HR")
+            <h5>
+                Подробный отчет с перечнем всех совершенных сотрудниками активностей.
+            </h5>
+        </li>
+        <li class="list-group-item">
+            @Html.ActionLink("Уровни и призы сотрудников в Excel", "EmpLevelExcel", "HR")
+            <h5>
+                Отчет об уровнях и поощрениях сотрудников по их суммарному количеству баллов.
+            </h5>
+        </li>
+
+    </ul>
+</div>
+
+<h2>Управление кодификаторами</h2>
+
+<div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"> @Html.ActionLink("Кодификатор типов активностей", "Index", "CodifierActivities")</li>
+        <li class="list-group-item">@Html.ActionLink("Кодификатор подразделений предприятия", "Index", "CodifierDepartments")</li>
+        <li class="list-group-item">@Html.ActionLink("Кодификатор должностей", "Index", "CodifierPosts")</li>
+        <li class="list-group-item">@Html.ActionLink("Кодификатор подтипов мероприятий", "Index", "CodifierSubtypeEvents")</li>
+    </ul>
+</div>
+

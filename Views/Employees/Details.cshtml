@@ -1,0 +1,111 @@
+﻿@model PracticeActivityTraking.Employee
+
+@{
+    ViewBag.Title = "Подробная информация о сотруднике";
+}
+
+<h2>Подробная информация о сотруднике</h2>
+
+<div>
+    <h4>Сотрудник</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PassportID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PassportID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patronymic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patronymic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Birthdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birthdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodifierGender.GenderName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodifierGender.GenderName)
+        </dd>
+
+        <dt>
+            @Html.Label("Суммарный бал за активности")
+        </dt>
+
+        <dd>
+            @Model.GetScore(Model.PassportID).ToString()
+        </dd>
+        <dt>
+            @Html.Label("Уровень активностей")
+        </dt>
+
+        <dd>
+            @Model.GetLevel(Model.PassportID).ToString()
+        </dd>
+        <dt>
+            @Html.Label("Поощрение за уровень активности")
+        </dt>
+
+        <dd>
+            @Model.GetPrize(Model.PassportID).ToString()
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.PassportID }) |
+    @Html.ActionLink("Вернуться к списку учетных записей", "Index")
+</p>

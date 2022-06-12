@@ -1,0 +1,72 @@
+﻿@model PracticeActivityTraking.Event
+
+@{
+    ViewBag.Title = "Информация о мероприятии";
+}
+
+<h2>Информация о мероприятии</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EventID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EventName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodifierFormatEvent.FormatName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodifierFormatEvent.FormatName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodifierStatusEvent.EventStatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodifierStatusEvent.EventStatusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodifierSubtypeEvent.CodifierTypeEvent.TypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodifierSubtypeEvent.CodifierTypeEvent.TypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodifierSubtypeEvent.SubtypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodifierSubtypeEvent.SubtypeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Изменить", "Edit", new { id = Model.EventID }) |
+    @Html.ActionLink("Вернуться к списку мероприятий", "Index")
+</p>

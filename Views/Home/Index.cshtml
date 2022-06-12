@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Домашняя страница";
+}
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h1>Домашняя страница</h1>
+
+<div>
+    <h4>
+        @Html.ActionLink("Сотрудники предприятия", "IndexUser", "Employees")
+    </h4>
+    <h4>
+        @Html.ActionLink("Мероприятия", "IndexUser", "Events")
+    </h4>
+    <h4>
+        @Html.ActionLink("Активности сотрудников", "IndexUser", "Activities")
+    </h4>
+</div>

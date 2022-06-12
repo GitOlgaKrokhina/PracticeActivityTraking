@@ -1,0 +1,32 @@
+﻿@model PracticeActivityTraking.CodifierPost
+
+@{
+    ViewBag.Title = "Информация о должности";
+}
+
+<h2>Информация о должности</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PostID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PostName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Изменить", "Edit", new { id = Model.PostID }) |
+    @Html.ActionLink("Вернуться к списку должностей", "Index")
+</p>

@@ -1,0 +1,42 @@
+﻿@model PracticeActivityTraking.CodifierActivity
+
+@{
+    ViewBag.Title = "Удаление типа активности";
+}
+
+<h2>Удаление типа активности</h2>
+
+<h3>Вы уверены, что хотите удалить этот тип активности?</h3>
+<h2>Внимание!</h2>
+<h3>При наличии данных, связанных с этой записью в других табоицах базы данных, они будут удалены каскадно. Убедитесь, что удаляемые данные ошибочны и не подлежат исправлению!</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivityName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Score)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Вернуться к кодификатору активностей", "Index")
+        </div>
+    }
+</div>

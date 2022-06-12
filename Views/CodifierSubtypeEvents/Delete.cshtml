@@ -1,0 +1,42 @@
+﻿@model PracticeActivityTraking.CodifierSubtypeEvent
+
+@{
+    ViewBag.Title = "Удаление подтипа мероприятия";
+}
+
+<h2>Удаление подтипа мероприятия</h2>
+
+<h3>Вы уверены, что хотите удалить этот подтип мероприятия?</h3>
+<h2>Внимание!</h2>
+<h3>При наличии данных, связанных с этой записью в других табоицах базы данных, они будут удалены каскадно. Убедитесь, что удаляемые данные ошибочны и не подлежат исправлению!</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SubtypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubtypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodifierTypeEvent.TypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodifierTypeEvent.TypeName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Вернуться к кодификатору подтипов мероприятий", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,85 @@
+﻿@model PracticeActivityTraking.Post
+
+@{
+    ViewBag.Title = "Информация о должности сотрудника";
+}
+
+<h2>Информация о должности сотрудника</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PostID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.PassportID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.PassportID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Surname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Patronymic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Patronymic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodifierDepartment.DepartmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodifierDepartment.DepartmentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodifierPost.PostName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodifierPost.PostName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateEmployment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateEmployment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateDismissal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateDismissal)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Изменить", "Edit", new { id = Model.EmployeeNumberID }) |
+    @Html.ActionLink("Вернуться к списку должностей сотрудников", "Index")
+</p>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<PracticeActivityTraking.CodifierPost>
+
+@{
+    ViewBag.Title = "Кодификатор должностей";
+}
+
+<h2>Кодификатор должностей</h2>
+
+<p>
+    @Html.ActionLink("Создать новую должность", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PostName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostName)
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id = item.PostID }) |
+                @Html.ActionLink("Подробнее", "Details", new { id = item.PostID }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.PostID })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Вернуться в панель HR-сотрудника", "Index", "HR")
+</p>
+

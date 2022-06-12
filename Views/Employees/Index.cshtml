@@ -1,0 +1,91 @@
+﻿@model IEnumerable<PracticeActivityTraking.Employee>
+
+@{
+    ViewBag.Title = "Учетные записи сотрудников";
+}
+
+<h2>Учетные записи сотрудников</h2>
+
+<p>
+    @Html.ActionLink("Создать новую запись", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PassportID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Patronymic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodifierGender.GenderName)
+        </th>
+        <th>
+            @Html.Label("Балл за активности")
+        </th>
+        <th>
+            @Html.Label("Уровень")
+        </th>
+        <th>
+            @Html.Label("Приз")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassportID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patronymic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodifierGender.GenderName)
+            </td>
+            <td>
+                @item.GetScore(item.PassportID).ToString()
+            </td>
+            <td>
+                @item.GetLevel(item.PassportID).ToString()
+            </td>
+            <td>
+                @item.GetPrize(item.PassportID).ToString()
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.PassportID }) |
+                @Html.ActionLink("Подробнее", "Details", new { id = item.PassportID }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.PassportID })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Вернуться в панель HR-сотрудника", "Index", "HR")
+</p>

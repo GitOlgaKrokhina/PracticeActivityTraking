@@ -1,0 +1,66 @@
+﻿@model PracticeActivityTraking.Event
+
+@{
+    ViewBag.Title = "Удаление мероприятия";
+}
+
+<h2>Удаление мероприятия</h2>
+
+<h3>Вы уверены, что хотите удалить это мероприятие?</h3>
+<h2>Внимание!</h2>
+<h3>При наличии данных, связанных с этой записью в других табоицах базы данных, они будут удалены каскадно. Убедитесь, что удаляемые данные ошибочны и не подлежат исправлению!</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EventName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodifierFormatEvent.FormatName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodifierFormatEvent.FormatName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodifierStatusEvent.EventStatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodifierStatusEvent.EventStatusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodifierSubtypeEvent.SubtypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodifierSubtypeEvent.SubtypeName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Вернуться к списку мероприятий", "Index")
+        </div>
+    }
+</div>

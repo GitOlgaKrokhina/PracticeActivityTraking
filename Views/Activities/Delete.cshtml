@@ -1,0 +1,58 @@
+﻿@model PracticeActivityTraking.Activity
+
+@{
+    ViewBag.Title = "Удаление активности";
+}
+
+<h2>Удаление активности</h2>
+
+<h3>Вы уверены, что хотите удалить эту активность?</h3>
+<h2>Внимание!</h2>
+<h3>При наличии данных, связанных с этой записью в других табоицах базы данных, они будут удалены каскадно. Убедитесь, что удаляемые данные ошибочны и не подлежат исправлению!</h3>
+<div>
+    <h4>Активность</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Event.EventName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Event.EventName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodifierActivity.ActivityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodifierActivity.ActivityName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodifierStatusActivity.ActivityStatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodifierStatusActivity.ActivityStatusName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Вернуться к списку активностей", "Index")
+        </div>
+    }
+</div>

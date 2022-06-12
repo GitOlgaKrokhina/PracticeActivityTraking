@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Вход в пространство HR-сотрудника";
+}
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h2>Вход в пространство HR-сотрудника</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <label>Код HR-сотрудника</label>
+    <br />
+    <input type="password" name="passHR" />
+    <input type="submit" value="Войти" class="btn btn-default" />
+    @Html.Raw(TempData["msg"])
+}
+<div>
+    @Html.ActionLink("Вернуться в главное меню", "Index", "Home")
+</div>

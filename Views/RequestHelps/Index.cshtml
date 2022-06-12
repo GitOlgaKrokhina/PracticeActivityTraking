@@ -1,0 +1,63 @@
+﻿@model PracticeActivityTraking.Models.ClassReq
+
+@{
+    ViewBag.Title = "Заявки от пользователей";
+}
+<!DOCTYPE html>
+
+<html>
+<h2>Заявки от пользователей</h2>
+
+<form method="get">
+    <div class="form-inline">
+        <label class="control-label">Статус: </label>
+        @Html.DropDownList("status", Model.Status as SelectList,
+                htmlAttributes: new { @class = "form-control" })
+
+        <input type="submit" value="Фильтр" class="btn btn-default" />
+    </div>
+</form>
+
+<body>
+    <table class="table">
+        <tr>
+            <th>Номер заявки</th>
+            <th>Паспорт</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Статус</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Requests)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassportID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodifierRequestHelp.StatusName)
+                </td>
+                <td>
+                    @Html.ActionLink("Изменить статус", "Edit", new { id = item.RequestID }) |
+                    @Html.ActionLink("Подробнее", "Details", new { id = item.RequestID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+
+<p>
+    @Html.ActionLink("Вернуться в панель HR-сотрудника", "Index", "HR")
+</p>
+</html>
